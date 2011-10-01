@@ -17235,8 +17235,18 @@ var WorkerClient = function(topLevelNamespaces, packagedJs, module, classname) {
         this.send(cmd, args);
     };
 
+    window.fire = function() {
+        env.editor.insert("1", false);
+    };
+
     this.emit = function(event, data) {
-        this.$worker.postMessage({event: event, data: data});
+        //try {
+        console.log("before")
+            this.$worker.postMessage({event: event, data: data});
+        //}
+        //catch(ex) {}
+        console.log("posted");
+        alert("pasted");
     };
 
 }).call(WorkerClient.prototype);
